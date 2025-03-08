@@ -270,6 +270,9 @@ def game():
         action = input('Выберите действие: ')
 
         if action == '1':
+            # cords = [
+            #     int(x) for x in input("Введите через пробел координаты: start_x, start_y, target_x, target_y ").split()
+            # ]
             cor_start_line = int(input('start_line (цифра): '))
             cor_start_col = get_col(input('start_col (буква): ').lower())
             cor_target_line = int(input('target_line (цифра): '))
