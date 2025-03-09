@@ -23,7 +23,7 @@ class Stack:
     def size(self):
         return len(self.items)
 
-    def show(self):
+    def __str__(self):
         return f'{self.items}'
 
 def is_valid(s):
@@ -31,16 +31,16 @@ def is_valid(s):
     for x, current_element in enumerate(s):
         if current_element == '(' or current_element == '[' or current_element == '{':
             s1.push(current_element)
-            #print(f'добавили: {current_element}, index: {x}, список: {s1.show()}')
+            #print(f'добавили: {current_element}, index: {x}, список: {s1}')
         elif current_element == ')' and s1.items[-1] == '(':
             s1.pop()
-            #print(f'убрали: {current_element}, index: {x}, список: {s1.show()}')
+            #print(f'убрали: {current_element}, index: {x}, список: {s1}')
         elif current_element == ']' and s1.items[-1] == '[':
             s1.pop()
-            #print(f'убрали: {current_element}, index: {x}, список: {s1.show()}')
+            #print(f'убрали: {current_element}, index: {x}, список: {s1}')
         elif current_element == '}' and s1.items[-1] == '{':
             s1.pop()
-            #print(f'убрали: {current_element}, index: {x}, cписок: {s1.show()}')
+            #print(f'убрали: {current_element}, index: {x}, cписок: {s1}')
         else:
             print('False. Строка является неправильной скобочной последовательностью')
             return False

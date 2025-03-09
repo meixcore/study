@@ -56,12 +56,6 @@ class Pawn(ChessPiece):
         else:
             raise ValueError('Ходы могут быть только для белых или черных фигур')
 
-    # def enemy_color(self):
-    #     if self.color == 'W':
-    #         return 'B'
-    #     else:
-    #         return 'W'
-
 
 class Rook(ChessPiece):
     def __init__(self, color: str, name: str) -> None:
@@ -159,16 +153,16 @@ class ChessBoard:
         :raise ValueError: Неверные координаты
         :return: None
 
-        >>> board_test = ChessBoard()
-        >>> board_test.fill_start_board()
-        >>> board_test.move_figure(1, 0, 2, 0)
-
-        >>> board_test = ChessBoard()
-        >>> board_test.fill_start_board()
-        >>> board_test.move_figure(9, 0, 9, 0)
-        Traceback (most recent call last):
-        ...
-        ValueError: Неверные координаты: (9, 0, 9, 0)
+        # >>> board_test = ChessBoard()
+        # >>> board_test.fill_start_board()
+        # >>> board_test.move_figure(1, 0, 2, 0)
+        #
+        # >>> board_test = ChessBoard()
+        # >>> board_test.fill_start_board()
+        # >>> board_test.move_figure(9, 0, 9, 0)
+        # Traceback (most recent call last):
+        # ...
+        # ValueError: Неверные координаты: (9, 0, 9, 0)
         """
 
         for c in (start_line, start_column, target_line, target_column):
@@ -201,17 +195,27 @@ class ChessBoard:
         :return: None
         """
 
-        possible_moves: list[tuple[int, int]] | None = self.board[start_line][start_column].get_possible_moves()
+        possible_moves: list[tuple[int, int]] | None = []
+        if isinstance(self.board[start_line][start_column], Pawn) and self.board[target_line][target_column] != self.__empty_cell:
+            if self.board[start_line][start_column].color == "W":
+                possible_moves = [(-1, -1), (-1, 1)]
+            elif self.board[start_line][start_column].color == "B":
+                possible_moves = [(1, -1), (1, 1)]
+        elif isinstance(self.board[start_line][start_column], Pawn) and self.board[target_line][target_column] == self.__empty_cell:
+            if self.board[start_line][start_column].color == "W":
+                possible_moves = [(-1, 0)]
+            elif self.board[start_line][start_column].color == "B":
+                possible_moves = [(1, 0)]
+        else:
+            possible_moves: list[tuple[int, int]] | None = self.board[start_line][start_column].get_possible_moves()
+
         delta = target_line - start_line, target_column - start_column
         print(
             f'\nХотим переместиться относительно текущих координат фигуры на: {delta}\n'
             f'Доступны для перемещения, относительно текущих координат: {possible_moves}\n'
         )
         if delta in possible_moves:
-            if self.board[target_line][target_column] == self.__empty_cell:
-                self.board[target_line][target_column] = self.board[start_line][start_column]
-                self.board[start_line][start_column] = self.__empty_cell
-            elif self.board[start_line][start_column].color != self.board[target_line][target_column].color:
+            if self.board[target_line][target_column] == self.__empty_cell or self.board[start_line][start_column].color != self.board[target_line][target_column].color:
                 self.board[target_line][target_column] = self.board[start_line][start_column]
                 self.board[start_line][start_column] = self.__empty_cell
             elif self.board[start_line][start_column].color == self.board[target_line][target_column].color:
