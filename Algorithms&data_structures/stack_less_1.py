@@ -1,6 +1,6 @@
 class Stack:
-    def __init__(self):
-        self.items = []
+    def __init__(self) -> None:
+        self.items: list[int] = []
 
     def is_empty(self):
         return len(self.items) == 0
@@ -23,12 +23,15 @@ class Stack:
     def size(self):
         return len(self.items)
 
-my_stack = Stack()
-my_stack.push(5)
-my_stack.push(10)
-my_stack.push(15)
+    def __str__(self):
+        return f'{self.items}'
 
-print("Вершина стека:", my_stack.peek())
-my_stack.pop()
-print("Стек пуст?", my_stack.is_empty())
-print("Размер стека:", my_stack.size())
+# my_stack = Stack()
+# my_stack.push(5)
+# my_stack.push(10)
+# my_stack.push(15)
+#
+# print("Вершина стека:", my_stack.peek())
+# my_stack.pop()
+# print("Стек пуст?", my_stack.is_empty())
+# print("Размер стека:", my_stack.size())
