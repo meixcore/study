@@ -3,9 +3,11 @@ from stack_less_1 import Stack
 def calc(s):
     s1 = Stack()
     tokens = s.split()
+    # print(tokens)
     for token in tokens:
-        if token in '1234567890':
+        if token.isdigit():
             s1.push(int(token))
+            # print(s1)
         elif token == '+':
             plus = s1.items[-1] + s1.items[-2]
             s1.pop()
@@ -32,3 +34,5 @@ def calc(s):
 
 x = input('Введите выражение для вычисления: ')
 calc(x)
+
+# 3 4 2 * +     25 11 +
