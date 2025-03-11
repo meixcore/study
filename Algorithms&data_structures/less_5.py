@@ -29,7 +29,7 @@ def calc(s):
             s1.pop()
             s1.push(delen)
         else:
-            raise ValueError('Ошибка')
+            raise ValueError('Символ не цифра и не "+-*/"')
         print(f'{s1.items[0]}')
 
 x = input('Введите выражение для вычисления: ')
