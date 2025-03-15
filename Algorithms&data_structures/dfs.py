@@ -12,6 +12,9 @@ class Node:
     def __str__(self):
         return f'Node({self.value})'
 
+    def __repr__(self):
+        return str(self)
+
 class Graph:
     def __init__(self, root):
         self._root = root
