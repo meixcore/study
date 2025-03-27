@@ -51,7 +51,9 @@ class Graph:
             print(vertex)
             visited.add(vertex)
 
-            for neighbor in vertex.outbound:
+            neighbors = list(vertex.outbound)
+
+            for neighbor in neighbors:
                 if neighbor not in visited:
                     queue.append(neighbor)
                     visited.add(neighbor)
