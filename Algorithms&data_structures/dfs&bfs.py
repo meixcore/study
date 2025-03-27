@@ -69,4 +69,5 @@ b.point_to(d)
 
 g = Graph(a)
 
+print(g.dfs())
 print(g.bfs())
