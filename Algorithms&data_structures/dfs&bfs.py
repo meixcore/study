@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -37,6 +39,24 @@ class Graph:
                     stack.append(neighbor)
         return visited
 
+    def bfs(self):
+        visited = set()
+        queue = deque()
+
+        queue.append(self._root)
+        visited.add(self._root)
+
+        while queue:
+            vertex = queue.popleft()
+            print(vertex)
+            visited.add(vertex)
+
+            for neighbor in vertex.outbound:
+                if neighbor not in visited:
+                    queue.append(neighbor)
+                    visited.add(neighbor)
+        return visited
+
 a = Node('a')
 b = Node('b')
 c = Node('c')
@@ -49,4 +69,4 @@ b.point_to(d)
 
 g = Graph(a)
 
-print(g.dfs())
+print(g.bfs())
