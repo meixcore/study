@@ -1,13 +1,9 @@
 def insertion_sort(arr):
-    for i in range(1, len(arr)):
-        ind = i - 1
-        elem = arr[i]
+    for j in range(1, len(arr)):
+        for i in range(j, 0, -1):
+            if arr[i] < arr[i - 1]:
+                arr[i], arr[i - 1] = arr[i - 1], arr[i]
 
-        while ind >= 0 and elem < arr[ind]:
-            arr[ind + 1] = arr[ind]
-            ind -= 1
-
-        arr[ind + 1] = elem
     return arr
 
 # Пример использования:
