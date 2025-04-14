@@ -45,4 +45,3 @@ regular_user = {'username': 'Bob', 'role': 'user'}
 # Вызовы функции
 print(delete_user(admin_user, 'Charlie')) # Должно отработать
 print(delete_user(regular_user, 'Charlie')) # Должно рейзить PermissionError
-
