@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Практика позиционирования</title>
+<style>
+    body {
+        margin: 0;
+        height: 2000px;
+        font-family: Arial, sans-serif;
+    }
+
+    .hint {
+        position: absolute;
+        padding: 10px;
+        color: white;
+        border-radius: 8px;
+    }
+
+    .top-left {
+        top: 10px;
+        left: 10px;
+        background: red;
+    }
+
+    .top-right {
+        top: 10px;
+        right: 10px;
+        background: blue;
+    }
+
+    .bottom-left {
+        bottom: 10px;
+        left: 10px;
+        background: green;
+    }
+
+    .bottom-right {
+        bottom: 10px;
+        right: 10px;
+        background: purple;
+    }
+
+    .fixed-button {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px 25px;
+        background: black;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+        background: #f5f5f5;
+        padding: 20px;
+        font-size: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="hint top-left">Левый верх</div>
+<div class="hint top-right">Правый верх</div>
+<div class="hero">
+    <div class="header">Липкий заголовок</div>
+</div>
+<div class="hint bottom-left">Левый низ</div>
+<div class="hint bottom-right">Правый низ</div>
+
+<div class="fixed-button">Кнопка</div>
+
+</body>
+</html>

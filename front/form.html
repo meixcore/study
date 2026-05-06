@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="username">Имя и фамилия:</label>
+        <input type="text" name="username" id="username" required>
+
+        <div>
+            <label for="age">Возраст:</label>
+            <input type="number" name="age" id="age">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div>Выбор типа миссии:</div>
+        <input type="radio" name="type-of-mission" id="type-explorer" value="explorer" required>
+        <label for="type-explorer">Исследователь</label>
+        <input type="radio" name="type-of-mission" id="type-engineer" value="engineer">
+        <label for="type-engineer">Инженер</label>
+        <input type="radio" name="type-of-mission" id="type-doctor" value="doctor">
+        <label for="type-doctor">Врач</label>
+
+        <div>Навыки:</div>
+        <input type="checkbox" name="skills" id="skills-prog" value="prog" required>
+        <label for="type-explorer">Программирование</label>
+        <input type="checkbox" name="skills" id="skills-medic" value="medic">
+        <label for="type-engineer">Медицина</label>
+        <input type="checkbox" name="skills" id="skills-build" value="build">
+        <label for="type-doctor">Строительство</label>
+
+        <div>
+            <label for="short-descr">Краткое описание, почему ты хочешь полететь на Марс</label>
+            <input type="text" name="short-descr" id="short-descr">
+        </div>
+
+        <div>
+            <label for="photo">Фото для анкеты:</label>
+            <input type="file" name="photo" id="candidate-photo" accept="image/*">
+        </div>
+
+        <label>
+            <input type="checkbox" name="agree" required>
+            Я согласен с условиями
+        </label>
+
+        <div>
+            <button type="submit">Отправить</button>
+        </div>
+    </form>
+</body>
+</html>
