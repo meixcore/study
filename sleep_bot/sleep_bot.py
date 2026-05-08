@@ -5,7 +5,12 @@ from dotenv import load_dotenv
 from sqlite3 import connect
 
 load_dotenv()
-bot = telebot.TeleBot(os.getenv('BOT_TOKEN'))
+TOKEN = os.environ.get("BOT_TOKEN")
+
+if not TOKEN:
+    raise ValueError("BOT_TOKEN не найден")
+
+bot = telebot.TeleBot(TOKEN)
 user_sleep_data = {}
 
 conn = connect("sleep_bot.db")
@@ -71,7 +76,7 @@ def wake(message):
     user_id = message.from_user.id
     sleep_time = get_active_sleep(user_id)
 
-    if get_active_sleep(user_id) is not None:
+    if sleep_time is not None:
         wake_time = time.time()
         sleep_duration = wake_time - sleep_time
         hours = int(sleep_duration // 3600)
@@ -165,6 +170,8 @@ def get_active_sleep(user_id):
             """
             SELECT sleep_time FROM sleep_records
             WHERE user_id = ? AND wake_time IS NULL
+            ORDER BY id DESC
+            LIMIT 1
             """,
             (user_id,)
         )
